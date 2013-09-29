@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'jquery-rails'
+gem 'haml-rails'
+gem 'turbolinks'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
@@ -16,6 +18,8 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
 
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'capybara'
+
+  gem 'database_cleaner'
 end
