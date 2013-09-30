@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
 
-  Quote = Struct.new :description, :author do
+  Quote = Struct.new :text, :author do
   end
 
   def random
