@@ -10,6 +10,10 @@ class QuotePresenter
     @quote = quote
   end
 
+  def has_quote?
+    quote
+  end
+
   def text
     @quote.text
   end

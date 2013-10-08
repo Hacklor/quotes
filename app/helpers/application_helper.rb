@@ -1,11 +1,11 @@
 module ApplicationHelper
 
-  def show_quote(quote)
-    if quote.nil?
-      "There are no quotes available"
+  def show_quote(quote_presenter)
+    if quote_presenter.has_quote?
+      content_tag(:div, quote_presenter.text, :id => 'quote') +
+      content_tag(:div, quote_presenter.author, :id => 'author')
     else
-      content_tag(:div, quote.text, :id => 'quote') +
-      content_tag(:div, quote.author, :id => 'author')
+      "There are no quotes available"
     end
   end
 end

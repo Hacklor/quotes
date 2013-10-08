@@ -5,7 +5,17 @@ describe QuotePresenter do
   before :each do
     quote = Quote.new(:text => "Some quote", :author => "Some author")
     @presenter = QuotePresenter.for(quote)
-    p "Presenter: #{@presenter}"
+  end
+
+  describe '#has_quote?' do
+    it "returns false when a quote doesn't exist" do
+      presenter = QuotePresenter.for(nil)
+      expect(presenter.has_quote?).to be_false
+    end
+
+    it "returns true when quote exists" do
+      expect(@presenter.has_quote?).to be_true
+    end
   end
 
   describe '#text' do
