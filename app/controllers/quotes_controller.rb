@@ -1,8 +1,9 @@
 class QuotesController < ApplicationController
 
   def random
-    quote = Quote.first
-    @quote = QuotePresenter.for(quote)
+    quote = Quote.random
+
+    @quote_presenter = QuotePresenter.for(quote)
   end
 
 end
