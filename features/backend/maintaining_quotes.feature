@@ -9,8 +9,7 @@ Feature:
     When I go to the quotes maintenance page
     Then I see that no quotes are available
 
-    @wip
   Scenario:
-    Given there are quotes present
-    When I go to the quotes maintain page
-    Then I see quotes
+    Given there are quotes present in the system
+    When I go to the quotes maintenance page
+    Then I see the quotes

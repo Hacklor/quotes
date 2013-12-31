@@ -17,7 +17,6 @@ describe QuotesController do
     it 'generates a random quote' do
       quote = double('Quote')
       Quote.stub(:random).and_return(quote)
-
       QuotePresenter.stub(:for).with(quote).and_return(quote_presenter)
 
       get :random

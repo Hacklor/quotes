@@ -1,1 +1,14 @@
-There are no quotes available
+- if @quotes_presenter.has_quotes?
+  %table.quotes
+    %thead
+      %th Quote
+      %th Author
+
+    %tbody
+      - @quotes_presenter.each do |p|
+        %tr
+          %td= truncate p.text, :length => 25, :sepatator => ' '
+          %td= p.author
+
+- else
+  There are no quotes available

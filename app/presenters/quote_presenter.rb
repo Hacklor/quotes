@@ -11,7 +11,7 @@ class QuotePresenter
   end
 
   def has_quote?
-    quote
+    !quote.nil?
   end
 
   def text

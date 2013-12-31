@@ -14,4 +14,3 @@ Feature:
     When I view the quotes page
     Then I see a quote
     And I see the author of the quote
-

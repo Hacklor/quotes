@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe QuotePresenter do
 
-  before :each do
+  before do
     quote = Quote.new(:text => "Some quote", :author => "Some author")
     @presenter = QuotePresenter.for(quote)
   end
