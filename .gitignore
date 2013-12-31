@@ -23,3 +23,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+
+# Ignore coverage reports
+rspec.html
+cucumber.html
