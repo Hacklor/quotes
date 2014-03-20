@@ -7,7 +7,7 @@
     %tbody
       - @quotes_presenter.each do |p|
         %tr
-          %td= truncate p.text, :length => 25, :sepatator => ' '
+          %td= truncate p.text, :length => 25, :separator => ' '
           %td= p.author
 
 - else

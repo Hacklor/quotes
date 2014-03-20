@@ -17,11 +17,8 @@ module Backend
     end
 
     def each(&block)
-      index = 0
-      while index < quotes.size
-        quote_presenter = QuotePresenter.for(quotes[index])
-        block.call(quote_presenter)
-        index += 1
+      quotes.each do |quote|
+        yield QuotePresenter.for(quote)
       end
     end
 

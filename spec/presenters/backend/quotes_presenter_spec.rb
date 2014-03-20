@@ -5,7 +5,6 @@ module Backend
   describe QuotesPresenter do
 
     describe '#has_quotes?' do
-
       let!(:quotes) { [] }
       let!(:presenter) { QuotesPresenter.for(quotes) }
 
@@ -20,7 +19,6 @@ module Backend
     end
 
     describe '#each' do
-
       let!(:quote) { double(Quote) }
       let!(:quotes) { [quote] }
 
