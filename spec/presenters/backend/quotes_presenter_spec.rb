@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'spec_helper_unit'
 
 module Backend
 
@@ -19,7 +19,7 @@ module Backend
     end
 
     describe '#each' do
-      let!(:quote) { double(Quote) }
+      let!(:quote) { double('Quote') }
       let!(:quotes) { [quote] }
 
       it 'return a quote_presenter' do

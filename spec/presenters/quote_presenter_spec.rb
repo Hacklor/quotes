@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'spec_helper_unit'
 
 describe QuotePresenter do
 
   before do
-    quote = Quote.new(:text => "Some quote", :author => "Some author")
+    quote = double(text: "Some quote", author: "Some author")
     @presenter = QuotePresenter.for(quote)
   end
 
@@ -29,4 +29,5 @@ describe QuotePresenter do
       expect(@presenter.author).to eq("Some author")
     end
   end
+
 end
