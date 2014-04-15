@@ -16,10 +16,15 @@ end
 group :development, :test do
   gem 'sqlite3'
 
+  gem 'ffaker'
   gem 'rspec'
   gem 'rspec-rails'
 
   gem 'pry-nav'
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
 group :cucumber do
@@ -28,5 +33,4 @@ group :cucumber do
   gem 'database_cleaner'
 
   gem 'launchy'
-  gem 'ffaker'
 end
