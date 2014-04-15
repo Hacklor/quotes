@@ -14,7 +14,6 @@ Feature:
     When I go to the quotes maintenance page
     Then I see the quotes
 
-    @wip
   Scenario: Adding a quote
     Given there are no quotes present
     When I go to the quotes maintenance page

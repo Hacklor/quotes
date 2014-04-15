@@ -12,9 +12,11 @@ module Backend
 
     def create
       @quote = Quote.new(quote_params)
-      @quote.save
-
-      redirect_to backend_quotes_path
+      if @quote.save
+        redirect_to backend_quotes_path
+      else
+        render :new
+      end
     end
 
     private
