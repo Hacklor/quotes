@@ -34,6 +34,22 @@ module Backend
     end
 
     describe "#create" do
+
+      let!(:quote_params) { { "author" => "Albert Einstein",
+                              "text" => "Insanity: doing the same thing over and over again and expecting different results." } }
+
+      it 'saves the new quote' do
+        expect {
+          post :create, quote: quote_params
+        }.to change { Quote.count } .by(1)
+      end
+
+      it 'redirects to index' do
+        post :create, quote: quote_params
+
+        expect(response).to redirect_to(backend_quotes_path)
+      end
+
     end
 
   end
