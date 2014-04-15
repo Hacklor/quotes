@@ -18,6 +18,8 @@ group :development, :test do
 
   gem 'rspec'
   gem 'rspec-rails'
+
+  gem 'pry-nav'
 end
 
 group :cucumber do
