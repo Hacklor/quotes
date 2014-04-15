@@ -4,7 +4,7 @@ module Backend
 
   describe QuotesController do
 
-    describe 'GET /index' do
+    describe '#index' do
 
       let!(:quotes_presenter) { double('QuotesPresenter') }
 
@@ -18,6 +18,22 @@ module Backend
         expect(assigns(:quotes_presenter)).to be(quotes_presenter)
       end
 
+    end
+
+    describe "#new" do
+
+      it 'assigns a new quote' do
+        quote = double
+        expect(Quote).to receive(:new).and_return(quote)
+
+        get :new
+
+        expect(assigns(:quote)).to eq(quote)
+      end
+
+    end
+
+    describe "#create" do
     end
 
   end
