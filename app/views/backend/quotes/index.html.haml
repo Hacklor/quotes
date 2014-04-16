@@ -1,7 +1,7 @@
-= link_to "Add quote", new_backend_quote_path
+= link_to "Add quote", new_backend_quote_path, class: ['btn', 'btn-info']
 
 - if @quotes_presenter.has_quotes?
-  %table.quotes
+  %table.quotes.table.table-striped
     %thead
       %th Quote
       %th Author

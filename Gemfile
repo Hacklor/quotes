@@ -6,12 +6,8 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'turbolinks'
-
-group :assets do
-  gem 'sass-rails', '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'uglifier', '>= 1.3.0'
-end
+gem 'sass-rails', '>= 3.2'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 group :development, :test do
   gem 'sqlite3'
