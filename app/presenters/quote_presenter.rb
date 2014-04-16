@@ -14,11 +14,15 @@ class QuotePresenter
     !quote.nil?
   end
 
+  def id
+    quote.id
+  end
+
   def text
-    @quote.text
+    quote.text
   end
 
   def author
-    @quote.author
+    quote.author
   end
 end

@@ -10,7 +10,7 @@ Feature:
     Then I see that no quotes are available
 
   Scenario:
-    Given there are quotes present in the system
+    Given there is a quote present
     When I view the quotes page
     Then I see a quote
     And I see the author of the quote

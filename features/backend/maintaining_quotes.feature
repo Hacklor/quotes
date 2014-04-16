@@ -10,7 +10,7 @@ Feature:
     Then I see that no quotes are available
 
   Scenario: Viewing the quotes
-    Given there are quotes present in the system
+    Given there is a quote present
     When I go to the quotes maintenance page
     Then I see the quotes
 
@@ -19,3 +19,9 @@ Feature:
     When I go to the quotes maintenance page
     And I add a new quote
     Then I see the quote
+
+  Scenario: Editing an existing quote
+    Given there is a quote present
+    When I go to the quotes maintenance page
+    And I edit an existing quote
+    Then I see the quote has been updated

@@ -4,14 +4,16 @@
 - if @quotes_presenter.has_quotes?
   %table.quotes.table.table-striped
     %thead
-      %th Quote
       %th Author
+      %th Quote
+      %th
 
     %tbody
       - @quotes_presenter.each do |p|
         %tr
-          %td= truncate p.text, :length => 25, :separator => ' '
           %td= p.author
+          %td= truncate p.text, :length => 25, :separator => ' '
+          %td= link_to 'Edit', edit_backend_quote_path(p.id), class: ['btn', 'btn-info', 'pull-right']
 
 - else
   There are no quotes available

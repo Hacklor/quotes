@@ -20,6 +20,19 @@ module Backend
       end
     end
 
+    def edit
+      @quote = Quote.find(params[:id])
+    end
+
+    def update
+      @quote = Quote.find(params[:id])
+      if @quote.update(quote_params)
+        redirect_to backend_quotes_path
+      else
+        render :edit
+      end
+    end
+
     private
 
     def quote_params

@@ -3,7 +3,7 @@ require 'spec_helper_unit'
 describe QuotePresenter do
 
   before do
-    quote = double(text: "Some quote", author: "Some author")
+    quote = double(id: 1, text: "Some quote", author: "Some author")
     @presenter = QuotePresenter.for(quote)
   end
 
@@ -15,6 +15,12 @@ describe QuotePresenter do
 
     it "returns true when quote exists" do
       expect(@presenter.has_quote?).to be_true
+    end
+  end
+
+  describe '#id' do
+    it 'returns the quote id' do
+      expect(@presenter.id).to eq(1)
     end
   end
 

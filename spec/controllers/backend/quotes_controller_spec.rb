@@ -68,6 +68,60 @@ module Backend
 
     end
 
+    describe '#edit' do
+
+      it 'assigns an existing quote' do
+        quote = double
+        expect(Quote).to receive(:find).with('1').and_return(quote)
+
+        get :edit, id: '1'
+
+        expect(assigns(:quote)).to eq(quote)
+      end
+
+    end
+
+    describe '#update' do
+
+      let!(:quote) { double }
+
+      before do
+        expect(Quote).to receive(:find).with('1').and_return(quote)
+        quote.stub(:update).and_return(true)
+      end
+
+      context 'valid' do
+
+        let!(:quote_params) { { "author" => "Albert Einstein",
+                                "text" => "Insanity: doing the same thing over and over again and expecting different results." } }
+
+        it 'finds the exising quote' do
+          expect(quote).to receive(:update).with(quote_params).and_return(true)
+          put :update, id: '1', quote: quote_params
+        end
+
+        it 'redirects to index' do
+          put :update, id: '1', quote: quote_params
+          expect(response).to redirect_to(backend_quotes_path)
+        end
+
+      end
+
+      context 'invalid' do
+
+        let!(:invalid_quote_params) { { "author" => "Albert Einstein",
+                                        "text" => "" } }
+
+        it 'renders edit' do
+          quote.stub(:update).and_return(false)
+          put :update, id: '1', quote: invalid_quote_params
+          expect(response).to render_template :edit
+        end
+
+      end
+
+    end
+
   end
 
 end
