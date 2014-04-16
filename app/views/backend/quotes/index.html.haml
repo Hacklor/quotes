@@ -4,15 +4,15 @@
 - if @quotes_presenter.has_quotes?
   %table.quotes.table.table-striped
     %thead
-      %th Author
-      %th Quote
+      %th.author Author
+      %th.quote Quote
       %th.actions
 
     %tbody
       - @quotes_presenter.each do |p|
         %tr
           %td= p.author
-          %td= truncate p.text, :length => 25, :separator => ' '
+          %td= truncate p.text, :length => 75, :separator => ' '
           %td
             = link_to 'Edit', edit_backend_quote_path(p.id), class: ['btn', 'btn-info']
             = link_to 'Delete', backend_quote_path(p.id), method: :delete,
