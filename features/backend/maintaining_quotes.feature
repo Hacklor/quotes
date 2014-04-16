@@ -24,4 +24,10 @@ Feature:
     Given there is a quote present
     When I go to the quotes maintenance page
     And I edit an existing quote
-    Then I see the quote has been updated
+    Then I see that the quote has been updated
+
+  Scenario: Removing an existing quote
+    Given there is a quote present
+    When I go to the quotes maintenance page
+    And I delete an existing quote
+    Then I see that the quote has been removed

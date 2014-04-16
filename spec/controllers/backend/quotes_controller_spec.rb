@@ -122,6 +122,27 @@ module Backend
 
     end
 
+    describe '#destroy' do
+
+      let!(:quote) { double }
+
+      before do
+        expect(Quote).to receive(:find).with('1').and_return(quote)
+      end
+
+      it 'deletes the quote' do
+        expect(quote).to receive(:destroy)
+        delete :destroy, id: '1'
+      end
+
+      it 'redirects to index' do
+        quote.stub(:destroy)
+        delete :destroy, id: '1'
+        expect(response).to redirect_to(backend_quotes_path)
+      end
+
+    end
+
   end
 
 end

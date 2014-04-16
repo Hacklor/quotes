@@ -30,11 +30,21 @@ When "I edit an existing quote" do
   fill_in_quote_form
 end
 
-Then "I see the quote has been updated" do
+Then "I see that the quote has been updated" do
   within '.quotes' do
     should have_content(@quote_author)
     should have_content(@quote_text[0..10])
   end
+end
+
+When "I delete an existing quote" do
+  within '.quotes' do
+    click_link 'Delete'
+  end
+end
+
+Then "I see that the quote has been removed" do
+  expect(page).to have_content("There are no quotes available")
 end
 
 def fill_in_quote_form

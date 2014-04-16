@@ -6,14 +6,17 @@
     %thead
       %th Author
       %th Quote
-      %th
+      %th.actions
 
     %tbody
       - @quotes_presenter.each do |p|
         %tr
           %td= p.author
           %td= truncate p.text, :length => 25, :separator => ' '
-          %td= link_to 'Edit', edit_backend_quote_path(p.id), class: ['btn', 'btn-info', 'pull-right']
+          %td
+            = link_to 'Edit', edit_backend_quote_path(p.id), class: ['btn', 'btn-info']
+            = link_to 'Delete', backend_quote_path(p.id), method: :delete,
+                class: ['btn', 'btn-danger'], data: { confirm: "Are you sure?" }
 
 - else
   There are no quotes available

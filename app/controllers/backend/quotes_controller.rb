@@ -32,6 +32,11 @@ module Backend
       end
     end
 
+    def destroy
+      quote.destroy
+      redirect_to backend_quotes_path
+    end
+
     private
 
     def quote_params
