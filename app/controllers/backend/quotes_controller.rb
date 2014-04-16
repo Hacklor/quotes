@@ -1,6 +1,7 @@
 module Backend
-
   class QuotesController < ApplicationController
+
+    layout 'backend'
 
     def index
       @quotes_presenter = QuotesPresenter.for(Quote.all)
@@ -26,5 +27,4 @@ module Backend
     end
 
   end
-
 end
