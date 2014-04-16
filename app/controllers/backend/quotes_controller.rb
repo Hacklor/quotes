@@ -21,12 +21,11 @@ module Backend
     end
 
     def edit
-      @quote = Quote.find(params[:id])
+      quote
     end
 
     def update
-      @quote = Quote.find(params[:id])
-      if @quote.update(quote_params)
+      if quote.update(quote_params)
         redirect_to backend_quotes_path
       else
         render :edit
@@ -37,6 +36,10 @@ module Backend
 
     def quote_params
       params.require(:quote).permit(:author, :text)
+    end
+
+    def quote
+      @quote ||= Quote.find(params[:id])
     end
 
   end
