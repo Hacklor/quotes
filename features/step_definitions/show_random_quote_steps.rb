@@ -7,7 +7,7 @@ Given 'there is a quote present' do
 end
 
 When 'I view the quotes page' do
-  visit random_quotes_url
+  visit root_url
 end
 
 Then 'I see that no quotes are available' do
