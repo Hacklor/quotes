@@ -2,6 +2,10 @@ When "I go to the quotes maintenance page" do
   visit backend_quotes_url
 end
 
+Then "I see that there are no quotes available in the backend" do
+  expect(page).to have_content("There are no quotes available")
+end
+
 Then "I see the quotes" do
   within '.quotes' do
     should have_content(@quote.author)

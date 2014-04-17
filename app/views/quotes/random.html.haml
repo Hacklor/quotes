@@ -8,3 +8,10 @@
         %br
         %span.spacer
         = @quote_presenter.author
+
+- else
+  %div.image
+    %img{src: image_path("sad.jpg")}
+    .quote
+      %span
+        Sorry, there are currently no quotes available
