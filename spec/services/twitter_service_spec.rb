@@ -9,7 +9,6 @@ describe TwitterService do
 
     it 'tweets a text' do
       expect(twitter_client).to receive(:update).with("tweet")
-
       subject.tweet("tweet")
     end
 

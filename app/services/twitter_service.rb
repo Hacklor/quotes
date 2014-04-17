@@ -1,7 +1,7 @@
 class TwitterService
 
   attr_reader :client
-  def initialize(client)
+  def initialize(client = TwitterClientFactory.get)
     @client = client
   end
 

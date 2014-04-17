@@ -1,7 +1,6 @@
-require 'spec_helper_unit'
-require 'twitter'
+require 'spec_helper'
 
-describe TwitterServiceFactory do
+describe TwitterClientFactory do
 
   describe '#get' do
 
@@ -9,8 +8,8 @@ describe TwitterServiceFactory do
 
       it 'returns a fake service' do
         ENV['RAILS_ENV'] = "development"
-        service = TwitterServiceFactory.get
-        expect(service.is_a?(LoggedTwitterService)).to be_true
+        service = TwitterClientFactory.get
+        expect(service.is_a?(LoggedTwitterClient)).to be_true
       end
 
     end
@@ -19,8 +18,8 @@ describe TwitterServiceFactory do
 
       it 'returns a fake service' do
         ENV['RAILS_ENV'] = "test"
-        service = TwitterServiceFactory.get
-        expect(service.is_a?(LoggedTwitterService)).to be_true
+        service = TwitterClientFactory.get
+        expect(service.is_a?(LoggedTwitterClient)).to be_true
       end
 
     end
@@ -29,7 +28,7 @@ describe TwitterServiceFactory do
 
       it 'returns the real service' do
         ENV['RAILS_ENV'] = "production"
-        service = TwitterServiceFactory.get
+        service = TwitterClientFactory.get
         expect(service.is_a?(Twitter::REST::Client)).to be_true
       end
 
