@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'spec_helper_unit'
 
 describe QuotePresenter do
 
-  before :each do
-    quote = Quote.new(:text => "Some quote", :author => "Some author")
+  before do
+    quote = double(id: 1, text: "Some quote", author: "Some author")
     @presenter = QuotePresenter.for(quote)
   end
 
@@ -18,6 +18,12 @@ describe QuotePresenter do
     end
   end
 
+  describe '#id' do
+    it 'returns the quote id' do
+      expect(@presenter.id).to eq(1)
+    end
+  end
+
   describe '#text' do
     it 'returns the quote text' do
       expect(@presenter.text).to eq("Some quote")
@@ -29,4 +35,5 @@ describe QuotePresenter do
       expect(@presenter.author).to eq("Some author")
     end
   end
+
 end

@@ -1,6 +1,6 @@
 class Quote < ActiveRecord::Base
 
-  attr_accessor :name, :description
+  validates :author, :text, presence: true
 
   def self.random
     offset = rand(Quote.count)

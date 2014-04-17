@@ -1,7 +1,7 @@
 Given 'there are no quotes present' do
 end
 
-Given 'there are quotes present in the system' do
+Given 'there is a quote present' do
   @quote = Quote.create!(text: Faker::Lorem.sentence,
                 author: Faker::Name.name)
 end
