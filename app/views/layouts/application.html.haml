@@ -1,0 +1,16 @@
+!!!
+%html<>
+  %head
+    %title Quotes Administration
+    = stylesheet_link_tag    'frontend', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .wrapper
+      .main
+        %h1.title Inpirational Quotes
+        %h3.subtitle Some nice subtitle text that I can't come up with right now
+
+    .page
+      .container
+        = yield

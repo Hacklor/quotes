@@ -1,1 +1,45 @@
 @import "bootstrap"
+
+$image-width: 1200px
+$image-height: 900px
+
+$quote-color: #dddddd
+$title-color: #202020
+$subtitle-color: #777777
+
+h1.title, h3.subtitle
+  text-align: center
+
+h1.title
+  color: $title-color
+
+h3.subtitle
+  margin-top: 0px
+  color: $subtitle-color
+
+.wrapper
+  margin-bottom: 25px
+
+.image
+  position: relative
+  width: $image-width
+  height: $image-height
+
+.image img
+  width: 100%
+
+.quote
+  position: absolute
+  top: $image-height - 250px
+  width: 100%
+
+.quote span
+  color: $quote-color
+  font: 24px/48px Helvetica, Sans-Serif
+  background: rgb(0, 0, 0)
+  background: rgba(0, 0, 0, 0.7)
+  padding: 10px
+
+.quote span span.spacer
+  padding: 0 5px
+  background: none

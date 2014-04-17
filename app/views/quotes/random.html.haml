@@ -1,3 +1,10 @@
-%img{src: image_path("landscape1.jpg")}
-%section.quote
- = show_quote(@quote_presenter)
+- if @quote_presenter.has_quote?
+  %div.image
+    %img{src: image_path(@image_presenter.random)}
+    .quote
+      %span
+        = @quote_presenter.text
+        %span.spacer
+        %br
+        %span.spacer
+        = @quote_presenter.author

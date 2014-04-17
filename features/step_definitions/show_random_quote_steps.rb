@@ -16,8 +16,5 @@ end
 
 Then 'I see a quote' do
   expect(page).to have_css('.quote', text: @quote.text)
-end
-
-And 'I see the author of the quote' do
-  expect(page).to have_css('.quote div#author', text: @quote.author)
+  expect(page).to have_css('.quote', text: @quote.author)
 end
