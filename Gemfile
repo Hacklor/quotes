@@ -4,10 +4,10 @@ gem 'rails', '4.0.0'
 
 gem 'jquery-rails'
 gem 'haml-rails'
-gem 'simple_form'
 gem 'turbolinks'
-gem 'sass-rails', '>= 3.2'
+gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3'
