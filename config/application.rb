@@ -14,5 +14,10 @@ Bundler.require(:default, Rails.env)
 module Quotes
   class Application < Rails::Application
     config.i18n.enforce_available_locales = false
+
+    config.twitter_consumer_key = ""
+    config.twitter_consumer_secret = ""
+    config.twitter_access_token = ""
+    config.twitter_access_token_secret = ""
   end
 end
