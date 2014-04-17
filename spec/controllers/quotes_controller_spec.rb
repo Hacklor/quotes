@@ -24,6 +24,15 @@ describe QuotesController do
       expect(assigns(:quote_presenter)).to be(quote_presenter)
     end
 
+    it 'generates a random image' do
+      image_presenter = double
+      LandscapeImagePresenter.stub(:new).and_return(image_presenter)
+
+      get :random
+
+      expect(assigns(:image_presenter)).to be(image_presenter)
+    end
+
   end
 
 end

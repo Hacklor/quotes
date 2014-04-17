@@ -1,23 +1,17 @@
-Given 'there are no quotes present' do
-end
-
 Given 'there is a quote present' do
   @quote = Quote.create!(text: Faker::Lorem.sentence,
                 author: Faker::Name.name)
 end
 
 When 'I view the quotes page' do
-  visit random_quotes_url
+  visit root_url
 end
 
 Then 'I see that no quotes are available' do
-  expect(page).to have_text('There are no quotes available')
+  expect(page).to have_text('there are currently no quotes available')
 end
 
 Then 'I see a quote' do
   expect(page).to have_css('.quote', text: @quote.text)
-end
-
-And 'I see the author of the quote' do
-  expect(page).to have_css('.quote div#author', text: @quote.author)
+  expect(page).to have_css('.quote', text: @quote.author)
 end
