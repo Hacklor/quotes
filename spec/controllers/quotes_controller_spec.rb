@@ -26,7 +26,7 @@ describe QuotesController do
 
     it 'generates a random image' do
       image_presenter = double
-      ImagePresenter.stub(:new).and_return(image_presenter)
+      LandscapeImagePresenter.stub(:new).and_return(image_presenter)
 
       get :random
 

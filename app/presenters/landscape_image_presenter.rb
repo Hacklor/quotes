@@ -1,0 +1,4 @@
+class LandscapeImagePresenter
+
+
+end
