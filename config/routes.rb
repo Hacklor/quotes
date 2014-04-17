@@ -3,5 +3,6 @@ Quotes::Application.routes.draw do
     resources :quotes, except: :show
   end
 
-  get 'random_quotes', to: 'quotes#random'
+  get 'random_quote', to: 'quotes#random'
+  root 'quotes#random'
 end
