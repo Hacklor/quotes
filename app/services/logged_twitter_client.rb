@@ -6,7 +6,6 @@ class LoggedTwitterClient
   end
 
   def update(text)
-    binding.pry
     logger.info("----- A tweet was sent -----")
     logger.info(text)
   end
