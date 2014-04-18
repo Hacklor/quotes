@@ -51,6 +51,14 @@ Then "I see that the quote has been removed" do
   expect(page).to have_content("There are no quotes available")
 end
 
+When "I tweet a quote" do
+  click_link "Tweet"
+end
+
+Then "I see that the quote has been tweeted" do
+  expect(page).to have_content("The quote has been tweeted")
+end
+
 def fill_in_quote_form
   @quote_author = Faker::Name.name
   @quote_text = Faker::Lorem.sentence

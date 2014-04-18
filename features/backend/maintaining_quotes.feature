@@ -29,3 +29,9 @@ Feature:
     When I go to the quotes maintenance page
     And I delete an existing quote
     Then I see that the quote has been removed
+
+  Scenario: Tweeting a quote
+    Given there is a quote present
+    When I go to the quotes maintenance page
+    And I tweet a quote
+    Then I see that the quote has been tweeted
