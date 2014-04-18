@@ -64,6 +64,11 @@ module Backend
           expect(response).to render_template :new
         end
 
+        it 'shows a flash error' do
+          post :create, quote: invalid_quote_params
+          expect(flash[:error]).not_to be_nil
+        end
+
       end
 
     end
@@ -112,10 +117,19 @@ module Backend
         let!(:invalid_quote_params) { { "author" => "Albert Einstein",
                                         "text" => "" } }
 
-        it 'renders edit' do
+        before do
           quote.stub(:update).and_return(false)
+          quote.stub_chain(:errors, :full_messages, :to_sentence).and_return(["Something went wrong"])
+        end
+
+        it 'renders edit' do
           put :update, id: '1', quote: invalid_quote_params
           expect(response).to render_template :edit
+        end
+
+        it 'shows a flash error' do
+          put :update, id: '1', quote: invalid_quote_params
+          expect(flash[:error]).not_to be_nil
         end
 
       end

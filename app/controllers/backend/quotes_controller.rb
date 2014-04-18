@@ -16,6 +16,7 @@ module Backend
       if @quote.save
         redirect_to backend_quotes_path
       else
+        flash[:error] = @quote.errors.full_messages.to_sentence
         render :new
       end
     end
@@ -28,6 +29,7 @@ module Backend
       if quote.update(quote_params)
         redirect_to backend_quotes_path
       else
+        flash[:error] = @quote.errors.full_messages.to_sentence
         render :edit
       end
     end
