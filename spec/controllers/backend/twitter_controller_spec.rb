@@ -8,9 +8,12 @@ module Backend
 
       let!(:quote) { double(author: "author", text: "text") }
       let!(:twitter_service) { double }
+      let!(:tweet_formatter) { double }
 
       before do
         Quote.stub(:find).and_return(quote)
+        TweetFormatter.stub(:new).with(quote).and_return(tweet_formatter)
+        tweet_formatter.stub(:formatted).and_return("Tweet!")
         TwitterService.stub(:new).and_return(twitter_service)
         twitter_service.stub(:tweet).and_return(true)
       end
@@ -28,8 +31,9 @@ module Backend
       context 'successfull tweet' do
 
         it 'tweets the quote' do
+          expect(tweet_formatter).to receive(:formatted).and_return("Tweet!")
           expect(TwitterService).to receive(:new).and_return(twitter_service)
-          expect(twitter_service).to receive(:tweet).with(quote.text)
+          expect(twitter_service).to receive(:tweet).with("Tweet!")
 
           post :tweet, quote_id: '1'
         end
