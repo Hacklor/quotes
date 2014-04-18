@@ -11,11 +11,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'simple_form'
 gem 'twitter'
 
-#
-# Run on sqlite3 even in production, since this is a sample application
-# For serious use switch to other database and an webserver other than Webrick
-#
-gem 'sqlite3'
+gem 'pg'
 
 group :development, :test do
   gem 'sqlite3'
