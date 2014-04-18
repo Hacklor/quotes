@@ -1,3 +1,9 @@
+- if flash[:error].present?
+  %div.alert.alert-danger.alert-dismissable
+    %button{type: 'button', class: 'close', data: { dismiss: 'alert' }, ario: { hidden: 'true'}}
+      &times;
+    = flash[:error]
+
 - if flash[:notice].present?
   %div.alert.alert-warning.alert-dismissable
     %button{type: 'button', class: 'close', data: { dismiss: 'alert' }, ario: { hidden: 'true'}}
