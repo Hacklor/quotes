@@ -12,7 +12,9 @@ class Quote < ActiveRecord::Base
 
   def valid_total_length?
     tweet_formatter = TweetFormatter.new(self)
-    tweet_formatter.valid_length?
+    unless tweet_formatter.valid_length?
+      errors[:total_length] = "can't be more than 140 characters"
+    end
   end
 
 end
