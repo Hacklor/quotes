@@ -15,9 +15,9 @@ module Quotes
   class Application < Rails::Application
     config.i18n.enforce_available_locales = false
 
-    config.twitter_consumer_key = ""
-    config.twitter_consumer_secret = ""
-    config.twitter_access_token = ""
-    config.twitter_access_token_secret = ""
+    config.twitter_consumer_key = "dDZPL5SYIOh6gdeVUYraehTNh"
+    config.twitter_consumer_secret = "Jq24Bjgxi5NYFDuIG5DJZGgRqOa69FkXdOtxCfqcmruobojMFi"
+    config.twitter_access_token = "2445981690-NIPqQld7xSsh62REp2rpUbB5Gz7mNWqaA1jn0ST"
+    config.twitter_access_token_secret = "c85Txpmw3t9GGkk28Hak7fZG4OpC697CyFS4fG8Hg1HSJ"
   end
 end
