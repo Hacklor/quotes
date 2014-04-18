@@ -2,7 +2,6 @@ require 'spec_helper_unit'
 
 describe TweetFormatter do
 
-
   describe '#formatted' do
 
     let!(:quote) { double(author: "Albert Einstein",
