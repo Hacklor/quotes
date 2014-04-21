@@ -8,19 +8,19 @@ possibility to tweet quotes to a configured Twitter account using API keys.
 How to install
 -----
 1. Clone the repository
-    git clone https://github.com/Hacklor/quotes.git <source dir>
+    <br/><br/><pre><code>git clone https://github.com/Hacklor/quotes.git <source dir></code></pre>
 2. Go to the directory where you cloned the repository
 3. Run bundler
-    bundle install
+<pre><code>bundle install</code></pre>
 4. Run all migrations
-    rake db:migrate
-    rake db:migrate RAILS_ENV=test
+<pre><code>rake db:migrate
+    rake db:migrate RAILS_ENV=test</code></pre>
 5. Run all tests
-    rspec && cucumber
+<pre><code>rspec && cucumber</code></pre>
 6. Optionally run database seeds
-    rake db:seed
+<pre><code>rake db:seed</code></pre>
 7. Start server
-    rails server
+<pre><code>rails server</code></pre>
 
 ### Setup Twitter API keys (for production environment only)
 The production environment requires you to set API keys in order to tweet a
@@ -45,23 +45,23 @@ You can set the keys in the config/application.rb file.
    right?)
 7. Copy and paste the API key from the Application Settings to the file in the
    field below:
-      config.twitter_consumer_key = "<your API key>"
+<pre><code>config.twitter_consumer_key = "<your API key>"</code></pre>
 8. Copy and paste the API secret from the Application Settings to the file in
    the field below:
-      config.twitter_consumer_secret = "<your API secret>"
+<pre><code>config.twitter_consumer_secret = "<your API secret>"</code></pre>
 9. Generate an access token and refresh the page
 10. Copy and paste the Access Token to the config file in the field below:
-      config.twitter_access_token = "<your Access Token>"
+<pre><code>config.twitter_access_token = "<your Access Token>"</code></pre>
 11. Copy and paste the Access Token Secret to the config file in the field
     below:
-      config.twitter_access_token_secret = "<your Access Token Secret>"
+<pre><code>config.twitter_access_token_secret = "<your Access Token Secret>"</code></pre>
 12. Save the file
-12. Start or restart the server in production mode
-    rake db:migrate RAILS_ENV=production
-    rails server -e production
+13. Start or restart the server in production mode
+<pre><code>rake db:migrate RAILS_ENV=production
+    rails server -e production</code></pre>
 
 
-Long description / RTFM
+Long description / RTFM / TL;DR
 -----
 ### Frontend
 When running the Rails server locally, go to http://localhost:3000 to view the
@@ -86,8 +86,8 @@ can also edit or delete a quotes.
 The development and test environments do not actually tweet to a Twitter
 account. They will instead add two lines to the log files. A message that a
 tweet was sent and a line that shows the exact formatting of the tweet.
-  ----- A tweet was sent -----
-  "The quote" - The author
+<pre><code>----- A tweet was sent -----
+"The quote" - The author</code></pre>
 
 The production environment requires you to set API keys in order to tweet a
 quote.
