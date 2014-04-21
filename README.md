@@ -8,7 +8,7 @@ possibility to tweet quotes to a configured Twitter account using API keys.
 How to install
 -----
 1. Clone the repository
-    <br/><br/><pre><code>git clone https://github.com/Hacklor/quotes.git <source dir></code></pre>
+    <br/><br/><pre><code>git clone https://github.com/Hacklor/quotes.git &lt;source dir&gt;</code></pre>
 2. Go to the directory where you cloned the repository
 3. Run bundler
 <pre><code>bundle install</code></pre>
@@ -45,16 +45,16 @@ You can set the keys in the config/application.rb file.
    right?)
 7. Copy and paste the API key from the Application Settings to the file in the
    field below:
-<pre><code>config.twitter_consumer_key = "<your API key>"</code></pre>
+<pre><code>config.twitter_consumer_key = "&lt;your API key&gt;"</code></pre>
 8. Copy and paste the API secret from the Application Settings to the file in
    the field below:
-<pre><code>config.twitter_consumer_secret = "<your API secret>"</code></pre>
+<pre><code>config.twitter_consumer_secret = "&lt;your API secret&gt;"</code></pre>
 9. Generate an access token and refresh the page
 10. Copy and paste the Access Token to the config file in the field below:
-<pre><code>config.twitter_access_token = "<your Access Token>"</code></pre>
+<pre><code>config.twitter_access_token = "&lt;your Access Token&gt;"</code></pre>
 11. Copy and paste the Access Token Secret to the config file in the field
     below:
-<pre><code>config.twitter_access_token_secret = "<your Access Token Secret>"</code></pre>
+<pre><code>config.twitter_access_token_secret = "&lt;your Access Token Secret&gt;"</code></pre>
 12. Save the file
 13. Start or restart the server in production mode
 <pre><code>rake db:migrate RAILS_ENV=production
