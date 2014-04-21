@@ -95,6 +95,7 @@ quote.
 Improvements / Todo's
 ------
 - Use Devise gem to ask for authorization before using the backend
+- Use Whenever gem (or something else) to automatically tweet a random quote
 - Use separate configuration file for Twitter API keys
 - Allow quotes with more than 140 characters to be tweeted
   * Build a show page in the frontend that shows a specific quote the same way a
