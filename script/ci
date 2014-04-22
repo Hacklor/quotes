@@ -19,8 +19,7 @@ echo "--- Running Cucumber"
 run cucumber features --profile ci --format html --out cucumber.html
 cucumber=$?
 
-if [[ $rspec -ne 0 || $spinach -ne 0 ]]; then
+if [[ $rspec -ne 0 || $cucumber -ne 0 ]]; then
   echo "--- Some tests have failed."
   exit 1
 fi
-
