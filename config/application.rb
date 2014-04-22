@@ -13,7 +13,7 @@ Bundler.require(:default, Rails.env)
 
 # Load the twitter configuration yml file
 TWITTER_CONFIG = YAML.load_file('config/twitter.defaults.yml')[Rails.env]
-user_twitter_config = YAML.load_file('config/twitter.yml')[Rails.env] || {}
+user_twitter_config = YAML.load_file('config/twitter.yml')[Rails.env] rescue {}
 TWITTER_CONFIG.merge!(user_twitter_config)
 
 module Quotes
