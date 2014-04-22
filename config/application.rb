@@ -11,13 +11,13 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+# Load the twitter configuration yml file
+TWITTER_CONFIG = YAML.load_file('config/twitter.defaults.yml')[Rails.env]
+user_twitter_config = YAML.load_file('config/twitter.yml')[Rails.env] || {}
+TWITTER_CONFIG.merge!(user_twitter_config)
+
 module Quotes
   class Application < Rails::Application
     config.i18n.enforce_available_locales = false
-
-    config.twitter_consumer_key = ""
-    config.twitter_consumer_secret = ""
-    config.twitter_access_token = ""
-    config.twitter_access_token_secret = ""
   end
 end
