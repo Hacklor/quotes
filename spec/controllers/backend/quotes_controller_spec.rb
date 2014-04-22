@@ -35,15 +35,26 @@ module Backend
 
     describe "#create" do
 
+      let!(:quote) { double }
+
+      before do
+        Quote.stub(:new).and_return(quote)
+      end
+
       context 'valid' do
 
         let!(:quote_params) { { "author" => "Albert Einstein",
                                 "text" => "Insanity: doing the same thing over and over again and expecting different results." } }
 
+        before do
+          quote.stub(:save).and_return(true)
+        end
+
         it 'saves the new quote' do
-          expect {
-            post :create, quote: quote_params
-          }.to change { Quote.count } .by(1)
+          expect(Quote).to receive(:new).with(quote_params).and_return(quote)
+          expect(quote).to receive(:save)
+
+          post :create, quote: quote_params
         end
 
         it 'redirects to index' do
@@ -59,12 +70,18 @@ module Backend
         let!(:invalid_quote_params) { { "author" => "Albert Einstein",
                                         "text" => "" } }
 
+        before do
+          quote.stub(:save).and_return(false)
+          quote.stub_chain(:errors, :full_messages, :to_sentence).and_return("An error")
+        end
+
         it 'renders new' do
           post :create, quote: invalid_quote_params
           expect(response).to render_template :new
         end
 
         it 'shows a flash error' do
+          expect(quote).to receive(:errors)
           post :create, quote: invalid_quote_params
           expect(flash[:error]).not_to be_nil
         end
