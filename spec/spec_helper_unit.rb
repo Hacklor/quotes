@@ -1,3 +1,7 @@
+# Run code coverage analysis
+require 'simplecov'
+SimpleCov.start
+
 require 'pathname'
 require 'pry'
 RAILS_ROOT = Pathname.new(File.expand_path("../..", __FILE__))
