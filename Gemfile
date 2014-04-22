@@ -24,6 +24,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'simplecov', '~> 0.7.1', require: false
 end
 
 group :cucumber do
