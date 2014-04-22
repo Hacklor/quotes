@@ -15,8 +15,9 @@ How to install
 4. Run all migrations
 <pre><code>rake db:migrate
     rake db:migrate RAILS_ENV=test</code></pre>
-5. Run all tests
+5. Run all tests and check code coverage
 <pre><code>rspec && cucumber</code></pre>
+Open &lt;source dir&gt;/coverage/index.html in a browser
 6. Optionally run database seeds
 <pre><code>rake db:seed</code></pre>
 7. Start server
