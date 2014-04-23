@@ -23,6 +23,10 @@ Open &lt;source dir&gt;/coverage/index.html in a browser
 7. Start server
 <pre><code>rails server</code></pre>
 
+
+Or run the ci-script from the source directory
+<pre><code>./script/ci</code></pre>
+
 ### Setup Twitter API keys (for production environment only)
 The production environment requires you to set API keys in order to tweet a
 quote. Twitter requires you to fill in a cell phone number in order to write
