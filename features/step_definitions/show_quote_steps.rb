@@ -7,6 +7,10 @@ When 'I view the quotes page' do
   visit root_url
 end
 
+When 'I view the specific quote' do
+  visit quote_url(@quote)
+end
+
 Then 'I see that no quotes are available' do
   expect(page).to have_text('there are currently no quotes available')
 end

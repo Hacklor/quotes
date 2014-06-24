@@ -1,5 +1,4 @@
 - if @quote_presenter.has_quote?
   = render 'quote', quote_presenter: @quote_presenter, image_presenter: @image_presenter
-
 - else
-  = render 'no_quotes_found'
+  = render 'quote_not_found'

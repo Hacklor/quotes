@@ -6,6 +6,8 @@ Quotes::Application.routes.draw do
     root 'quotes#index'
   end
 
+  resources :quotes, only: :show
   get 'random_quote', to: 'quotes#random'
+
   root 'quotes#random'
 end
