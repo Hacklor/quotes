@@ -6,32 +6,22 @@ module Backend
 
     describe '#tweet' do
 
-      let!(:quote) { double(id: '1', author: "author", text: "text") }
-      let!(:short_url) { "http://bit.ly/short" }
+      let!(:quote) { double(id: '1') }
+      let!(:populate_tweet) { double }
       let!(:twitter_service) { double }
-      let!(:bitly_service) { double }
-      let!(:tweet_formatter) { double }
 
       before do
         Quote.stub(:find).and_return(quote)
 
-        BitlyService.stub(:new).and_return(bitly_service)
-        bitly_service.stub(:shorten).and_return(short_url)
-
-        TweetFormatter.stub(:new).with(quote, short_url).and_return(tweet_formatter)
-        tweet_formatter.stub(:formatted).and_return("Tweet!")
+        PopulateTweet.stub(:new).and_return(populate_tweet)
+        populate_tweet.stub(:text).and_return("Text to send to Twitter!")
 
         TwitterService.stub(:new).and_return(twitter_service)
-        twitter_service.stub(:tweet).and_return(true)
+        twitter_service.stub(:tweet).with("Text to send to Twitter!").and_return(true)
       end
 
       it 'finds the quote' do
         expect(Quote).to receive(:find).with('1').and_return(quote)
-        post :tweet, quote_id: '1'
-      end
-
-      it 'shortens the url' do
-        expect(bitly_service).to receive(:shorten).with(quote_url(quote.id))
         post :tweet, quote_id: '1'
       end
 
@@ -43,9 +33,10 @@ module Backend
       context 'successfull tweet' do
 
         it 'tweets the quote' do
-          expect(tweet_formatter).to receive(:formatted).and_return("Tweet!")
+          expect(PopulateTweet).to receive(:new).with(quote, quote_url(quote.id))
+          expect(populate_tweet).to receive(:text).and_return("Text to send to Twitter!")
           expect(TwitterService).to receive(:new).and_return(twitter_service)
-          expect(twitter_service).to receive(:tweet).with("Tweet!")
+          expect(twitter_service).to receive(:tweet).with("Text to send to Twitter!")
 
           post :tweet, quote_id: '1'
         end
