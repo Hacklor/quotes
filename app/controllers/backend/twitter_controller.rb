@@ -4,9 +4,9 @@ module Backend
 
     def tweet
       populate_tweet = PopulateTweet.new(quote, quote_url(quote.id))
-      twitter_service = TwitterService.new
+      twitter_service = TwitterService.new(populate_tweet)
 
-      if twitter_service.tweet(populate_tweet.text)
+      if twitter_service.tweet
         flash[:notice] = "The quote has been tweeted"
       else
         flash[:error] = twitter_service.error_message

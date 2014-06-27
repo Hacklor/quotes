@@ -12,12 +12,10 @@ module Backend
 
       before do
         Quote.stub(:find).and_return(quote)
-
         PopulateTweet.stub(:new).and_return(populate_tweet)
-        populate_tweet.stub(:text).and_return("Text to send to Twitter!")
 
-        TwitterService.stub(:new).and_return(twitter_service)
-        twitter_service.stub(:tweet).with("Text to send to Twitter!").and_return(true)
+        TwitterService.stub(:new).with(populate_tweet).and_return(twitter_service)
+        twitter_service.stub(:tweet).and_return(true)
       end
 
       it 'finds the quote' do
@@ -33,10 +31,9 @@ module Backend
       context 'successfull tweet' do
 
         it 'tweets the quote' do
-          expect(PopulateTweet).to receive(:new).with(quote, quote_url(quote.id))
-          expect(populate_tweet).to receive(:text).and_return("Text to send to Twitter!")
-          expect(TwitterService).to receive(:new).and_return(twitter_service)
-          expect(twitter_service).to receive(:tweet).with("Text to send to Twitter!")
+          expect(PopulateTweet).to receive(:new).with(quote, quote_url(quote.id)).and_return(populate_tweet)
+          expect(TwitterService).to receive(:new).with(populate_tweet).and_return(twitter_service)
+          expect(twitter_service).to receive(:tweet)
 
           post :tweet, quote_id: '1'
         end

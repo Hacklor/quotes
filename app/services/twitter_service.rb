@@ -1,13 +1,15 @@
 class TwitterService
 
-  attr_reader :client, :error_message
-  def initialize(client = TwitterClientFactory.get)
+  attr_reader :error_message
+  def initialize(populate_tweet, client = TwitterClientFactory.get)
+    @populate_tweet = populate_tweet
     @client = client
   end
 
-  def tweet(text)
+  def tweet
     begin
-      client.update(text)
+      text = @populate_tweet.text
+      @client.update(text)
       true
     rescue Twitter::Error => error
       @error_message = error.message
