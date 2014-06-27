@@ -6,20 +6,32 @@ module Backend
 
     describe '#tweet' do
 
-      let!(:quote) { double(author: "author", text: "text") }
+      let!(:quote) { double(id: '1', author: "author", text: "text") }
+      let!(:short_url) { "http://bit.ly/short" }
       let!(:twitter_service) { double }
+      let!(:bitly_service) { double }
       let!(:tweet_formatter) { double }
 
       before do
         Quote.stub(:find).and_return(quote)
-        TweetFormatter.stub(:new).with(quote).and_return(tweet_formatter)
+
+        BitlyService.stub(:new).and_return(bitly_service)
+        bitly_service.stub(:shorten).and_return(short_url)
+
+        TweetFormatter.stub(:new).with(quote, short_url).and_return(tweet_formatter)
         tweet_formatter.stub(:formatted).and_return("Tweet!")
+
         TwitterService.stub(:new).and_return(twitter_service)
         twitter_service.stub(:tweet).and_return(true)
       end
 
       it 'finds the quote' do
         expect(Quote).to receive(:find).with('1').and_return(quote)
+        post :tweet, quote_id: '1'
+      end
+
+      it 'shortens the url' do
+        expect(bitly_service).to receive(:shorten).with(quote_url(quote.id))
         post :tweet, quote_id: '1'
       end
 

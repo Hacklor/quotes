@@ -3,15 +3,16 @@ class TweetFormatter
   MAX_TWEET_LENGTH = 140
   TRUNCATION_CHARACTERS = "...".freeze
 
-  def initialize(quote)
+  def initialize(quote, url)
     @quote = quote
+    @url = url
   end
 
   def formatted
-    author_text = " - #{@quote.author}"
-    quote_text = quote_text(MAX_TWEET_LENGTH - author_text.length)
+    post_text = " - #{@quote.author} (#{@url})"
+    quote_text = quote_text(MAX_TWEET_LENGTH - post_text.length)
 
-    "#{quote_text}#{author_text}"
+    "#{quote_text}#{post_text}"
   end
 
   private

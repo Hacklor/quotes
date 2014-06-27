@@ -1,16 +1,17 @@
-require 'spec_helper_unit'
+require 'spec_helper'
 
 describe TweetFormatter do
 
   describe '#formatted' do
 
-    subject(:formatter) { TweetFormatter.new(quote) }
+    subject(:url) { "http://someurlxx.com" }
+    subject(:formatter) { TweetFormatter.new(quote, url) }
 
     context 'short quote' do
-      let(:quote) { double(author: 'Albert Einstein', text: 'Insanity: doing the same thing over and over again and expecting different results.') }
+      let(:quote) { double(author: 'a' * 5, text: 'b' * 100) }
 
-      it 'formats the tweet' do
-        expect(formatter.formatted).to eq("\"#{quote.text}\" - #{quote.author}")
+      it 'formats the tweet with url' do
+        expect(formatter.formatted).to eq("\"#{quote.text}\" - #{quote.author} (#{url})")
       end
     end
 
@@ -18,10 +19,10 @@ describe TweetFormatter do
       let(:quote) { double(author: 'a' * 5, text: 'b' * 131) }
 
       it 'truncates a long tweet' do
-        expected_text = 'b' * 127
+        expected_text = 'b' * 104
 
         expect(formatter.formatted.length).to eq(140)
-        expect(formatter.formatted).to eq("\"#{expected_text}...\" - #{quote.author}")
+        expect(formatter.formatted).to eq("\"#{expected_text}...\" - #{quote.author} (#{url})")
       end
 
     end
