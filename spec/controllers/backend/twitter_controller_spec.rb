@@ -6,15 +6,15 @@ module Backend
 
     describe '#tweet' do
 
-      let!(:quote) { double(author: "author", text: "text") }
+      let!(:quote) { double(id: '1') }
+      let!(:populate_tweet) { double }
       let!(:twitter_service) { double }
-      let!(:tweet_formatter) { double }
 
       before do
         Quote.stub(:find).and_return(quote)
-        TweetFormatter.stub(:new).with(quote).and_return(tweet_formatter)
-        tweet_formatter.stub(:formatted).and_return("Tweet!")
-        TwitterService.stub(:new).and_return(twitter_service)
+        PopulateTweet.stub(:new).and_return(populate_tweet)
+
+        TwitterService.stub(:new).with(populate_tweet).and_return(twitter_service)
         twitter_service.stub(:tweet).and_return(true)
       end
 
@@ -31,9 +31,9 @@ module Backend
       context 'successfull tweet' do
 
         it 'tweets the quote' do
-          expect(tweet_formatter).to receive(:formatted).and_return("Tweet!")
-          expect(TwitterService).to receive(:new).and_return(twitter_service)
-          expect(twitter_service).to receive(:tweet).with("Tweet!")
+          expect(PopulateTweet).to receive(:new).with(quote, quote_url(quote.id)).and_return(populate_tweet)
+          expect(TwitterService).to receive(:new).with(populate_tweet).and_return(twitter_service)
+          expect(twitter_service).to receive(:tweet)
 
           post :tweet, quote_id: '1'
         end

@@ -1,13 +1,12 @@
 module Backend
   class TwitterController < ApplicationController
-
     layout 'backend'
 
     def tweet
-      twitter_service = TwitterService.new
-      tweet_formatter = TweetFormatter.new(quote)
+      populate_tweet = PopulateTweet.new(quote, quote_url(quote.id))
+      twitter_service = TwitterService.new(populate_tweet)
 
-      if twitter_service.tweet(tweet_formatter.formatted)
+      if twitter_service.tweet
         flash[:notice] = "The quote has been tweeted"
       else
         flash[:error] = twitter_service.error_message

@@ -1,46 +1,40 @@
-require 'spec_helper_unit'
+require 'spec_helper'
 
 describe TweetFormatter do
 
   describe '#formatted' do
 
-    let!(:quote) { double(author: "Albert Einstein",
-                          text: "Insanity: doing the same thing over and over again and expecting different results.") }
+    let!(:url) { "http://someurlxx.com" }
+    subject(:formatter) { TweetFormatter.new(quote, url) }
 
-    it 'formats the tweet' do
-      formatter = TweetFormatter.new(quote)
-      expect(formatter.formatted).to eq("\"#{quote.text}\" - #{quote.author}")
-    end
+    context 'short quote' do
+      let(:quote) { double(author: 'a' * 5, text: 'b' * 100) }
 
-  end
-
-  describe "#valid_length?" do
-
-    let!(:quote) { double(author: "", text: "") }
-    let!(:formatter) { TweetFormatter.new(quote) }
-
-    context 'valid' do
-
-      it 'returns true with length of 139 characters' do
-        5.times { quote.author << "a" }
-        129.times { quote.text << "b" }
-        expect(formatter.valid_length?).to be_true
-      end
-
-      it 'returns true with length of 140 characters' do
-        5.times { quote.author << "a" }
-        130.times { quote.text << "b" }
-        expect(formatter.valid_length?).to be_true
+      it 'formats the tweet with url' do
+        expect(formatter.formatted).to eq("\"#{quote.text}\" - #{quote.author} (#{url})")
       end
 
     end
 
-    context 'invalid' do
+    context 'too long quote' do
+      let(:quote) { double(author: 'a' * 5, text: 'b' * 131) }
 
-      it 'returns false with length of 141 characters' do
-        5.times { quote.author << "a" }
-        131.times { quote.text << "b" }
-        expect(formatter.valid_length?).to be_false
+      it 'truncates a long tweet' do
+        expected_text = 'b' * 104
+
+        expect(formatter.formatted.length).to eq(140)
+        expect(formatter.formatted).to eq("\"#{expected_text}...\" - #{quote.author} (#{url})")
+      end
+
+    end
+
+    context 'no url available' do
+
+      let(:quote) { double(author: 'a' * 5, text: 'b' * 100) }
+
+      it 'does not show the url' do
+        formatter = TweetFormatter.new(quote, nil)
+        expect(formatter.formatted).to eq("\"#{quote.text}\" - #{quote.author}")
       end
 
     end

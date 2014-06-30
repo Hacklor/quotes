@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'simple_form'
 gem 'twitter'
+gem 'bitly'
 
 gem 'pg'
 

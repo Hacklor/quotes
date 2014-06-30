@@ -6,18 +6,31 @@ describe TwitterService do
   describe '#tweet' do
 
     let!(:twitter_client) { double }
-    let!(:subject) { TwitterService.new(twitter_client) }
+    let!(:populate_tweet) { double }
+    let!(:subject) { TwitterService.new(populate_tweet, twitter_client) }
+
+    before do
+      populate_tweet.stub(:text).and_return('tweet')
+    end
 
     context 'succesfull tweet' do
 
+      before do
+        twitter_client.stub(:update).and_return(true)
+      end
+
+      it 'populates the tweet' do
+        expect(populate_tweet).to receive(:text)
+        subject.tweet
+      end
+
       it 'tweets a text' do
-        expect(twitter_client).to receive(:update).with("tweet")
-        subject.tweet("tweet")
+        expect(twitter_client).to receive(:update).with('tweet')
+        subject.tweet
       end
 
       it 'returns true' do
-        twitter_client.stub(:update)
-        success = subject.tweet("tweet")
+        success = subject.tweet
         expect(success).to be_true
       end
 
@@ -27,8 +40,7 @@ describe TwitterService do
 
       it 'returns false' do
         twitter_client.stub(:update).and_raise(Twitter::Error::Forbidden)
-        success = subject.tweet("tweet")
-        expect(success).to be_false
+        expect(subject.tweet).to be_false
       end
 
       it 'remembers the error message' do
@@ -36,7 +48,7 @@ describe TwitterService do
         exception.stub(:message).and_return('error')
         twitter_client.stub(:update).and_raise(exception)
 
-        subject.tweet("tweet")
+        subject.tweet
         expect(subject.error_message).to eq('error')
       end
 

@@ -19,17 +19,4 @@ describe Quote do
 
   end
 
-  describe '#valid_total_length?' do
-
-    it 'delegates to TweetFormatter' do
-      tweet_formatter = double
-      expect(TweetFormatter).to receive(:new).and_return(tweet_formatter)
-      expect(tweet_formatter).to receive(:valid_length?)
-
-      quote = Quote.create(author: "author", text: "text")
-      expect(quote.errors[:total_length]).not_to be_nil
-    end
-
-  end
-
 end
