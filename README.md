@@ -63,7 +63,7 @@ You can set the keys in the config/twitter.yml file.
     rails server -e production</code></pre>
 
 
-Long description / RTFM / TL;DR
+Long description
 -----
 ### Frontend
 When running the Rails server locally, go to http://localhost:3000 to view the
