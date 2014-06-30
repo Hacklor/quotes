@@ -1,5 +1,5 @@
 require 'spec_helper_unit'
-require 'twitter'
+require 'bitly'
 
 describe BitlyService do
 
@@ -18,6 +18,15 @@ describe BitlyService do
         expect(bitly_response).to receive(:short_url).and_return short_url
 
         expect(subject.shorten(long_url)).to eq(short_url)
+      end
+
+    end
+
+    context 'error' do
+
+      it 'returns a nil' do
+        expect(bitly_client).to receive(:shorten).and_raise(BitlyError.new('INVALID_URI', 500))
+        expect(subject.shorten(long_url)).to eq(nil)
       end
 
     end

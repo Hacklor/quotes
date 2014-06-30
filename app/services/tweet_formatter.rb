@@ -9,7 +9,8 @@ class TweetFormatter
   end
 
   def formatted
-    post_text = " - #{@quote.author} (#{@url})"
+    post_text = " - #{@quote.author}"
+    post_text += " (#{@url})" unless @url.nil?
     quote_text = quote_text(MAX_TWEET_LENGTH - post_text.length)
 
     "#{quote_text}#{post_text}"

@@ -5,8 +5,12 @@ class BitlyService
   end
 
   def shorten(long_url)
-    response = @client.shorten(long_url)
-    response.short_url
+    begin
+      response = @client.shorten(long_url)
+      response.short_url
+    rescue
+      nil
+    end
   end
 
 end
