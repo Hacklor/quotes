@@ -10,6 +10,7 @@ describe LoggedTwitterClient do
     it 'tweets a text' do
       expect(logger).to receive(:info).with("----- A tweet was sent -----")
       expect(logger).to receive(:info).with("tweet")
+      expect(logger).to receive(:info).with("Length: 5")
       subject.update("tweet")
     end
   end

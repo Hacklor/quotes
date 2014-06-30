@@ -1,6 +1,6 @@
 class TweetFormatter
 
-  MAX_TWEET_LENGTH = 140
+  MAX_TWEET_LENGTH = 139
   TRUNCATION_CHARACTERS = "...".freeze
 
   def initialize(quote, url)

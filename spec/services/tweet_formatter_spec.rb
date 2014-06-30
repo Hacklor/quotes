@@ -17,12 +17,12 @@ describe TweetFormatter do
     end
 
     context 'too long quote' do
-      let(:quote) { double(author: 'a' * 5, text: 'b' * 131) }
+      let(:quote) { double(author: 'a' * 5, text: 'b' * 130) }
 
       it 'truncates a long tweet' do
-        expected_text = 'b' * 104
+        expected_text = 'b' * 103
 
-        expect(formatter.formatted.length).to eq(140)
+        expect(formatter.formatted.length).to eq(139)
         expect(formatter.formatted).to eq("\"#{expected_text}...\" - #{quote.author} (#{url})")
       end
 
