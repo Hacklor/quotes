@@ -7,6 +7,7 @@
 
 # Ignore configuration
 /config/twitter.yml
+/config/bitly.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
